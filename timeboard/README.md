@@ -10,7 +10,7 @@ Usage
 
 ```hcl
 module "timeboard_mongo_beical-mongod" {
-  source         = "github.com/traveloka/terraform-datadog-mongo.git?//timeboard"
+  source         = "github.com/traveloka/terraform-datadog-mongo//timeboard"
   product_domain = "${var.product_domain}"
   cluster        = "${var.cluster}"
 }

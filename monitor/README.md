@@ -7,8 +7,8 @@ Terraform module for Datadog Monitor Mongo.
 
 Usage
 -----
-* [Simple Example](https://github.com/traveloka/terraform-datadog-monitor-mongo/tree/master/examples/simple)
-* [Complete Example](https://github.com/traveloka/terraform-datadog-monitor-mongo/tree/master/examples/complete)
+* [Simple Example](https://github.com/traveloka/terraform-datadog-mongo/tree/master/monitor/examples/simple)
+* [Complete Example](https://github.com/traveloka/terraform-datadog-mongo/tree/master/monitor/examples/complete)
 
 Terraform Version
 -----------------
