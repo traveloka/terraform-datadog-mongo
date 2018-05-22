@@ -2,15 +2,12 @@ module "beical_mongod_monitor" {
   source         = "../.."
   product_domain = "BEI"
   service        = "beical"
-  cluster        = "ppsdata-mongod"
+  cluster        = "beical-mongod"
 
   recipients        = ["slack-bei", "pagerduty-bei", "bei@traveloka.com"]
   renotify_interval = 0
   notify_audit      = false
 
-  #########
-  # MONGO #
-  #########
   curr_op_5s_thresholds = {
     critical = 10
     warning  = 5
@@ -58,63 +55,4 @@ module "beical_mongod_monitor" {
 
   queue_write_message            = "Monitor is triggered"
   queue_write_escalation_message = "Monitor isn't resolved for given interval"
-
-  ##########
-  # SYSTEM #
-  ##########
-  system_cpu_usage_thresholds = {
-    critical = 70
-    warning  = 50
-  }
-
-  system_cpu_usage_message            = "Monitor is triggered"
-  system_cpu_usage_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_disk_usage_thresholds = {
-    critical = 70
-    warning  = 60
-  }
-
-  system_disk_usage_message            = "Monitor is triggered"
-  system_disk_usage_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_memory_free_thresholds = {
-    critical = 1000000000
-    warning  = 1500000000
-  }
-
-  system_memory_free_message            = "Monitor is triggered"
-  system_memory_free_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_network_in_thresholds = {
-    critical = 30000000
-    warning  = 20000000
-  }
-
-  system_network_in_message            = "Monitor is triggered"
-  system_network_in_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_network_out_thresholds = {
-    critical = 30000000
-    warning  = 20000000
-  }
-
-  system_network_out_message            = "Monitor is triggered"
-  system_network_out_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_open_file_thresholds = {
-    critical = 4000
-    warning  = 3000
-  }
-
-  system_open_file_message            = "Monitor is triggered"
-  system_open_file_escalation_message = "Monitor isn't resolved for given interval"
-
-  system_load_thresholds = {
-    critical = 3
-    warning  = 2
-  }
-
-  system_load_message            = "Monitor is triggered"
-  system_load_escalation_message = "Monitor isn't resolved for given interval"
 }

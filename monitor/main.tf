@@ -1,5 +1,5 @@
 module "curr_op_5s" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -18,7 +18,7 @@ module "curr_op_5s" {
 }
 
 module "curr_op_15s" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -37,7 +37,7 @@ module "curr_op_15s" {
 }
 
 module "curr_op_30s" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -56,7 +56,7 @@ module "curr_op_30s" {
 }
 
 module "page_faultsps" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -75,7 +75,7 @@ module "page_faultsps" {
 }
 
 module "queue_read" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -94,7 +94,7 @@ module "queue_read" {
 }
 
 module "queue_write" {
-  source  = "github.com/traveloka/terraform-datadog-monitor?ref=v0.1.2"
+  source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${var.enabled}"
 
   product_domain = "${var.product_domain}"
@@ -110,43 +110,4 @@ module "queue_write" {
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
-}
-
-module "system" {
-  source         = "github.com/traveloka/terraform-datadog-monitor-system?ref=v0.1.1"
-  product_domain = "${var.product_domain}"
-  service        = "${var.service}"
-  cluster        = "${var.cluster}"
-
-  recipients        = "${var.recipients}"
-  renotify_interval = 0
-  notify_audit      = false
-
-  cpu_usage_thresholds         = "${var.system_cpu_usage_thresholds}"
-  cpu_usage_message            = "${var.system_cpu_usage_message}"
-  cpu_usage_escalation_message = "${var.system_cpu_usage_escalation_message}"
-
-  disk_usage_thresholds         = "${var.system_disk_usage_thresholds}"
-  disk_usage_message            = "${var.system_disk_usage_message}"
-  disk_usage_escalation_message = "${var.system_disk_usage_escalation_message}"
-
-  memory_free_thresholds         = "${var.system_memory_free_thresholds}"
-  memory_free_message            = "${var.system_memory_free_message}"
-  memory_free_escalation_message = "${var.system_memory_free_escalation_message}"
-
-  network_in_thresholds         = "${var.system_network_in_thresholds}"
-  network_in_message            = "${var.system_network_in_message}"
-  network_in_escalation_message = "${var.system_network_in_escalation_message}"
-
-  network_out_thresholds         = "${var.system_network_out_thresholds}"
-  network_out_message            = "${var.system_network_out_message}"
-  network_out_escalation_message = "${var.system_network_out_escalation_message}"
-
-  open_file_thresholds         = "${var.system_open_file_thresholds}"
-  open_file_message            = "${var.system_open_file_message}"
-  open_file_escalation_message = "${var.system_open_file_escalation_message}"
-
-  system_load_thresholds         = "${var.system_load_thresholds}"
-  system_load_message            = "${var.system_load_message}"
-  system_load_escalation_message = "${var.system_load_escalation_message}"
 }
