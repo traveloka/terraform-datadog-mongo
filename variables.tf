@@ -16,6 +16,7 @@ variable "cluster" {
 
 variable "environment" {
   type        = "string"
+  default     = "*"
   description = "The name of the environment"
 }
 
