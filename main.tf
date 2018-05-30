@@ -482,7 +482,7 @@ resource "datadog_timeboard" "mongo" {
   }
 }
 
-module "curr_op_5s" {
+module "monitor_curr_op_5s" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
@@ -502,7 +502,7 @@ module "curr_op_5s" {
   notify_audit      = "${var.notify_audit}"
 }
 
-module "curr_op_15s" {
+module "monitor_curr_op_15s" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
@@ -522,7 +522,7 @@ module "curr_op_15s" {
   notify_audit      = "${var.notify_audit}"
 }
 
-module "curr_op_30s" {
+module "monitor_curr_op_30s" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
@@ -542,7 +542,7 @@ module "curr_op_30s" {
   notify_audit      = "${var.notify_audit}"
 }
 
-module "page_faultsps" {
+module "monitor_page_faultsps" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
@@ -562,7 +562,7 @@ module "page_faultsps" {
   notify_audit      = "${var.notify_audit}"
 }
 
-module "queue_read" {
+module "monitor_queue_read" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
@@ -582,7 +582,7 @@ module "queue_read" {
   notify_audit      = "${var.notify_audit}"
 }
 
-module "queue_write" {
+module "monitor_queue_write" {
   source  = "github.com/traveloka/terraform-datadog-monitor"
   enabled = "${local.monitor_enabled}"
 
