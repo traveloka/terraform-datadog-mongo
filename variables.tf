@@ -14,6 +14,11 @@ variable "cluster" {
   default     = ""
 }
 
+variable "environment" {
+  type        = "string"
+  description = "The name of the environment"
+}
+
 variable "recipients" {
   type        = "list"
   default     = []
