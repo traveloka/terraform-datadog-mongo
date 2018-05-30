@@ -1,8 +1,9 @@
-module "beical_mongod_monitor" {
+module "mongo" {
   source         = "../.."
   product_domain = "BEI"
   service        = "beical"
-  cluster        = "beical-mongod"
+  cluster        = "acontent-mongod"
+  environment    = "production"
 
   recipients        = ["slack-bei", "pagerduty-bei", "bei@traveloka.com"]
   renotify_interval = 0
