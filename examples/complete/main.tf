@@ -2,12 +2,15 @@ module "mongo" {
   source         = "../.."
   product_domain = "BEI"
   service        = "beical"
-  cluster        = "acontent-mongod"
+  cluster        = "beical-mongod"
   environment    = "production"
+  tags           = ["tag1", "tag2"]
 
-  recipients        = ["slack-bei", "pagerduty-bei", "bei@traveloka.com"]
-  renotify_interval = 0
-  notify_audit      = false
+  recipients         = ["bei@traveloka.com"]
+  alert_recipients   = ["pagerduty-bei"]
+  warning_recipients = ["slack-bei"]
+  renotify_interval  = 0
+  notify_audit       = false
 
   curr_op_5s_thresholds = {
     critical = 10

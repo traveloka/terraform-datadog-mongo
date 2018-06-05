@@ -489,6 +489,8 @@ module "monitor_curr_op_5s" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Current Operation 5s is High : {{ host.ip }} Name: {{ host.name }}"
   query              = "max(last_1m):max:custom.mongodb.curr_op_5s{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.curr_op_5s_thresholds["critical"]}"
@@ -496,7 +498,9 @@ module "monitor_curr_op_5s" {
   message            = "${var.curr_op_5s_message}"
   escalation_message = "${var.curr_op_5s_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
@@ -509,6 +513,8 @@ module "monitor_curr_op_15s" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Current Operation 15s is High : {{ host.ip }} Name: {{ host.name }}"
   query              = "max(last_1m):max:custom.mongodb.curr_op_15s{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.curr_op_15s_thresholds["critical"]}"
@@ -516,7 +522,9 @@ module "monitor_curr_op_15s" {
   message            = "${var.curr_op_15s_message}"
   escalation_message = "${var.curr_op_15s_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
@@ -529,6 +537,8 @@ module "monitor_curr_op_30s" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Current Operation 30s is High : {{ host.ip }} Name: {{ host.name }}"
   query              = "max(last_1m):max:custom.mongodb.curr_op_30s{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.curr_op_30s_thresholds["critical"]}"
@@ -536,7 +546,9 @@ module "monitor_curr_op_30s" {
   message            = "${var.curr_op_30s_message}"
   escalation_message = "${var.curr_op_30s_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
@@ -549,6 +561,8 @@ module "monitor_page_faultsps" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Page Fault Per Second is High : {{ host.ip }} Name: {{ host.name }}"
   query              = "avg(last_1m):sum:mongodb.extra_info.page_faultsps{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.page_faultsps_thresholds["critical"]}"
@@ -556,7 +570,9 @@ module "monitor_page_faultsps" {
   message            = "${var.page_faultsps_message}"
   escalation_message = "${var.page_faultsps_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
@@ -569,6 +585,8 @@ module "monitor_queue_read" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Queue Read is High on IP : {{ host.ip }} Name: {{ host.name }}"
   query              = "avg(last_1m):sum:mongodb.globallock.currentqueue.readers{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.queue_read_thresholds["critical"]}"
@@ -576,7 +594,9 @@ module "monitor_queue_read" {
   message            = "${var.queue_read_message}"
   escalation_message = "${var.queue_read_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
@@ -589,6 +609,8 @@ module "monitor_queue_write" {
   product_domain = "${var.product_domain}"
   service        = "${var.service}"
   environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
 
   name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Queue Write is High on IP : {{ host.ip }} Name: {{ host.name }}"
   query              = "avg(last_1m):sum:mongodb.globallock.currentqueue.writers{cluster: ${var.cluster}, environment:${var.environment}} by {name} >= ${var.queue_write_thresholds["critical"]}"
@@ -596,7 +618,9 @@ module "monitor_queue_write" {
   message            = "${var.queue_write_message}"
   escalation_message = "${var.queue_write_escalation_message}"
 
-  recipients = "${var.recipients}"
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
 
   renotify_interval = "${var.renotify_interval}"
   notify_audit      = "${var.notify_audit}"
