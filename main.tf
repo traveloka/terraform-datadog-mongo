@@ -480,6 +480,17 @@ resource "datadog_timeboard" "mongo" {
       type = "line"
     }
   }
+
+  graph {
+    title     = "Bytes in Cache Percentage"
+    viz       = "timeseries"
+    autoscale = true
+
+    request {
+      q    = "(avg:mongodb.wiredtiger.cache.bytes_currently_in_cache{$cluster,$environment} by {name}/avg:mongodb.wiredtiger.cache.maximum_bytes_configured{$cluster,$environment} by {name})*100"
+      type = "line"
+    }
+  }
 }
 
 module "monitor_curr_op_5s" {
@@ -617,6 +628,30 @@ module "monitor_queue_write" {
   thresholds         = "${var.queue_write_thresholds}"
   message            = "${var.queue_write_message}"
   escalation_message = "${var.queue_write_escalation_message}"
+
+  recipients         = "${var.recipients}"
+  alert_recipients   = "${var.alert_recipients}"
+  warning_recipients = "${var.warning_recipients}"
+
+  renotify_interval = "${var.renotify_interval}"
+  notify_audit      = "${var.notify_audit}"
+}
+
+module "monitor_bytes_in_cache" {
+  source  = "github.com/traveloka/terraform-datadog-monitor"
+  enabled = "${local.monitor_enabled}"
+
+  product_domain = "${var.product_domain}"
+  service        = "${var.service}"
+  environment    = "${var.environment}"
+  tags           = "${var.tags}"
+  timeboard_id   = "${join(",", datadog_timeboard.mongo.*.id)}"
+
+  name               = "${var.product_domain} - ${var.cluster} - ${var.environment} - Bytes In Cache is High on IP : {{ host.ip }} Name: {{ host.name }}"
+  query              = "avg(last_1m):(avg:mongodb.wiredtiger.cache.bytes_currently_in_cache{cluster: ${var.cluster}, environment:${var.environment}} by {name} / avg:mongodb.wiredtiger.cache.maximum_bytes_configured{cluster: ${var.cluster}, environment:${var.environment}} by {name}) * 100 >= ${var.bytes_in_cache_thresholds["critical"]}"
+  thresholds         = "${var.bytes_in_cache_thresholds}"
+  message            = "${var.bytes_in_cache_message}"
+  escalation_message = "${var.bytes_in_cache_escalation_message}"
 
   recipients         = "${var.recipients}"
   alert_recipients   = "${var.alert_recipients}"

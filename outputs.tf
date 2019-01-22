@@ -32,3 +32,9 @@ output "monitor_queue_write_name" {
   value       = "${module.monitor_queue_write.name}"
   description = "The name of datadog monitor for Mongo Queue Write"
 }
+
+output "monitor_bytes_in_cache_name" {
+  value       = "${module.monitor_bytes_in_cache.name}"
+  description = "The name of datadog monitor for Mongo Bytes in Cache Percentage"
+}
+
