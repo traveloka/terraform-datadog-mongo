@@ -59,4 +59,12 @@ module "mongo" {
 
   queue_write_message            = "Monitor is triggered"
   queue_write_escalation_message = "Monitor isn't resolved for given interval"
+
+  bytes_in_cache_thresholds = {
+    critical = 85
+    warning  = 80
+  }
+
+  bytes_in_cache_message            = "Monitor is triggered"
+  bytes_in_cache_escalation_message = "Monitor isn't resolved for given interval"
 }

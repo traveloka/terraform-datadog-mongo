@@ -199,3 +199,26 @@ variable "queue_write_escalation_message" {
   default     = ""
   description = "The escalation message when Mongo Queue Write monitor isn't resolved for given time"
 }
+
+variable "bytes_in_cache_thresholds" {
+  type = "map"
+
+  default = {
+    critical = 90
+    warning  = 85
+  }
+
+  description = "The warning and critical thresholds for Mongo Bytes in Cache Percentage monitoring"
+}
+
+variable "bytes_in_cache_message" {
+  type        = "string"
+  default     = ""
+  description = "The message when Mongo Bytes in Cache Percentage monitor triggered"
+}
+
+variable "bytes_in_cache_escalation_message" {
+  type        = "string"
+  default     = ""
+  description = "The escalation message when Mongo Bytes in Cache Percentage monitor isn't resolved for given time"
+}
