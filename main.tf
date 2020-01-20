@@ -411,7 +411,7 @@ resource "datadog_timeboard" "mongo" {
     autoscale = true
 
     request {
-      q    = "avg:mongodb.wiredtiger.cache.bytes_currently_in_cache{mongo-cluster:payment-mongod} by {name}"
+      q    = "avg:mongodb.wiredtiger.cache.bytes_currently_in_cache{$cluster, $environment} by {name}"
       type = "line"
     }
   }
